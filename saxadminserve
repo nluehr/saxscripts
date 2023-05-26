@@ -1,0 +1,9 @@
+#!/bin/bash
+
+cd /saxml
+bazel run --override_repository=org_tensorflow=/tensorflow saxml/bin:admin_server -- \
+  --sax_cell=$SAX_CELL \
+  --sax_root=$SAX_ROOT \
+  --port=10000 \
+  --alsologtostderr
+

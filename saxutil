@@ -1,0 +1,5 @@
+#!/bin/bash
+
+cd /saxml
+bazel run --override_repository=org_tensorflow=/tensorflow \
+    saxml/bin:saxutil -- --sax_root=$SAX_ROOT "$@"
