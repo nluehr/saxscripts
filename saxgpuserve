@@ -5,6 +5,6 @@ bazel run --override_repository=org_tensorflow=/tensorflow saxml/server:server -
   --sax_cell=$SAX_CELL \
   --port=10001 \
   --platform_chip=a100 \
-  --platform_topology=4 \
+  --platform_topology=8 \
   --jax_platforms=cuda \
   --alsologtostderr
