@@ -11,10 +11,11 @@ Step 2: Update the model MESH and start the GPU server
 ```
 docker exec -it saxcont /bin/bash
 
-# Limit the number of visible devices as needed.
+# Limit the number of visible devices if needed
 #export CUDA_VISIBLE_DEVICES=0,1,2,3
 
-# Edit MESH_SHAPEs to match the number of visible GPUs
+# Edit MESH_SHAPEs for LmCloudSpmd175BTest to match the number
+# of visible GPUs (e.g., 8)
 vim /saxml/saxml/server/pax/lm/params/lm_cloud.py
 
 saxgpuserve
