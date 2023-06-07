@@ -12,7 +12,7 @@ RUN apt update \
  && sed -i requirements.txt \
         -e '/jax_cuda_releases.html/a --find-links https://storage.googleapis.com/jax-releases/jaxlib_nightly_cuda12_releases.html' \
         -e 's/^jaxlib[= @].*$/jaxlib==0.4.11.dev20230526+cuda12.cudnn88/' \
-        -e 's|^jax[= @].*$|jax[cuda12_local] @ git+https://github.com/google/jax@9615a31a73f16c83ac2e1bd1c444221cbccb5abc|' \
+        -e 's|^jax[= @].*$|jax[cuda12_local] @ git+https://github.com/google/jax@1279418ce52b921f2ed9fc658dd6e1139ebd93b9|' \
         -e 's|\(^paxml.*$\)|\1@32de4662600c5e3fafcd63dd493c7f7abd4692ee|' \
         -e 's|\(^praxis.*$\)|\1@d39c631c9482950d542672c282e7fa88aab48bff|' \
         -e 's|^orbax-checkpoint==.*$|orbax-checkpoint==0.2.3|' \
