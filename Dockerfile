@@ -14,6 +14,7 @@ RUN apt update \
         -e 's|^jax[= @].*$|jax[cuda12_local] @ git+https://github.com/google/jax@9615a31a73f16c83ac2e1bd1c444221cbccb5abc|' \
         -e 's|\(^paxml.*$\)|\1@32de4662600c5e3fafcd63dd493c7f7abd4692ee|' \
         -e 's|\(^praxis.*$\)|\1@d39c631c9482950d542672c282e7fa88aab48bff|' \
+        -e 's|^orbax-checkpoint==.*$|orbax-checkpoint==0.2.3|' \
  && sed -i 's/sudo //g' saxml/tools/init_cloud_vm.sh \
  && saxml/tools/init_cloud_vm.sh \
  && rm -rf /var/lib/apt/lists/*
