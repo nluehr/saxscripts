@@ -5,12 +5,17 @@ RUN apt update \
  && git config --global user.email "someone@somewhere" \
  && git config --global user.name "Someone" \
  && git clone https://github.com/google/saxml /saxml \
- && cp /saxml/requirements-cuda.txt /saxml/requirements.txt \
- && sed -i /saxml/requirements.txt \
-        -e 's/^jaxlib[= @].*$/jaxlib==0.4.10+cuda12.cudnn88/' \
-        -e 's/^jax[= @].*$/jax==0.4.10/' \
- && sed -i 's/sudo //g' /saxml/saxml/tools/init_cloud_vm.sh \
- && cd /saxml && saxml/tools/init_cloud_vm.sh \
+ && cd /saxml \
+ && git checkout 95243a8764d92a3cfd999d3045c5ddd464147b59 \
+ && cp requirements-cuda.txt requirements.txt \
+ && sed -i requirements.txt \
+        -e '/jax_cuda_releases.html/a --find-links https://storage.googleapis.com/jax-releases/jaxlib_nightly_cuda12_releases.html' \
+        -e 's/^jaxlib[= @].*$/jaxlib==0.4.11.dev20230526+cuda12.cudnn88/' \
+        -e 's|^jax[= @].*$|jax[cuda12_local] @ git+https://github.com/google/jax@9615a31a73f16c83ac2e1bd1c444221cbccb5abc|' \
+        -e 's|\(^paxml.*$\)|\1@32de4662600c5e3fafcd63dd493c7f7abd4692ee|' \
+        -e 's|\(^praxis.*$\)|\1@d39c631c9482950d542672c282e7fa88aab48bff|' \
+ && sed -i 's/sudo //g' saxml/tools/init_cloud_vm.sh \
+ && saxml/tools/init_cloud_vm.sh \
  && rm -rf /var/lib/apt/lists/*
 
 # TensorFlow 2.11 needs a minor tweak in order to build with CUDA 12
