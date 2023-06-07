@@ -1,7 +1,8 @@
 FROM nvidia/cuda:12.1.1-cudnn8-devel-ubuntu22.04
 
 RUN apt update \
- && apt install -y --no-install-recommends curl vim git \
+ && apt install -y --no-install-recommends \
+        cuda-nsight-systems-12-1 curl vim git \
  && git config --global user.email "someone@somewhere" \
  && git config --global user.name "Someone" \
  && git clone https://github.com/google/saxml /saxml \
