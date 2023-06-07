@@ -42,8 +42,7 @@ RUN mkdir -p $SAX_ROOT \
         --sax_cell=$SAX_CELL \
         --sax_root=$SAX_ROOT \
         --fs_root=/sax-fs-root \
-        --alsologtostderr \
- && bazel clean --expunge
+        --alsologtostderr
 
 # Convenience Scripts
 COPY saxgpuserve saxadminserve saxutil /usr/bin/
